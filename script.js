@@ -1,8 +1,7 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  const $ = (selector) => document.querySelector(selector);
-  const $$ = (selector) => [...document.querySelectorAll(selector)];
+  const $ = selector => document.querySelector(selector);
+  const $$ = selector => [...document.querySelectorAll(selector)];
 
   const intro = $("#intro");
   const experience = $("#experience");
@@ -11,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chapterNames = [
     "Një dëshirë për ty",
     "Një pyetje e vogël",
-    "Një shoqëri e vogël",
+    "Një surprizë për ty",
     "Pak magji",
     "Një letër për ty"
   ];
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let catLocked = false;
   let collected = 0;
   let collectionLocked = false;
-  let levelFourStarted = false;
+  let levelThreeStarted = false;
   let transitionTimer = null;
 
 
@@ -38,99 +37,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const balloons = $("#balloonLayer");
     const sparkles = $("#sparkleLayer");
-    const rain = $("#rainLayer");
 
-    if (balloons) {
+    const colors = [
+      "#f4a7b8",
+      "#f7d3c2",
+      "#e7b7d2",
+      "#d8b9df",
+      "#f5c8a2"
+    ];
 
-      const colors = [
-        "#f4a7b8",
-        "#f7d3c2",
-        "#e7b7d2",
-        "#d8b9df",
-        "#f5c8a2"
-      ];
+    for (let i = 0; i < 13; i++) {
 
-      for (let i = 0; i < 13; i++) {
+      const balloon = document.createElement("span");
 
-        const balloon = document.createElement("span");
+      balloon.className = "balloon";
+      balloon.style.left = `${Math.random() * 100}%`;
+      balloon.style.background = colors[i % colors.length];
 
-        balloon.className = "balloon";
-        balloon.style.left = `${Math.random() * 100}%`;
-        balloon.style.background = colors[i % colors.length];
+      balloon.style.setProperty(
+        "--dur",
+        `${19 + Math.random() * 17}s`
+      );
 
-        balloon.style.setProperty(
-          "--dur",
-          `${19 + Math.random() * 17}s`
-        );
+      balloon.style.setProperty(
+        "--delay",
+        `${Math.random() * -30}s`
+      );
 
-        balloon.style.setProperty(
-          "--delay",
-          `${Math.random() * -30}s`
-        );
+      balloon.style.setProperty(
+        "--drift",
+        `${Math.random() * 100 - 50}px`
+      );
 
-        balloon.style.setProperty(
-          "--drift",
-          `${Math.random() * 100 - 50}px`
-        );
-
-        balloons.appendChild(balloon);
-      }
+      balloons.appendChild(balloon);
     }
 
+    for (let i = 0; i < 30; i++) {
 
-    if (sparkles) {
+      const sparkle = document.createElement("span");
 
-      for (let i = 0; i < 30; i++) {
+      sparkle.className = "sparkle";
+      sparkle.textContent = i % 3 === 0 ? "✧" : "·";
 
-        const sparkle = document.createElement("span");
+      sparkle.style.left = `${Math.random() * 100}%`;
+      sparkle.style.top = `${Math.random() * 100}%`;
 
-        sparkle.className = "sparkle";
-        sparkle.textContent = i % 3 === 0 ? "✧" : "·";
+      sparkle.style.setProperty(
+        "--dur",
+        `${2 + Math.random() * 4}s`
+      );
 
-        sparkle.style.left = `${Math.random() * 100}%`;
-        sparkle.style.top = `${Math.random() * 100}%`;
+      sparkle.style.setProperty(
+        "--delay",
+        `${Math.random() * -5}s`
+      );
 
-        sparkle.style.setProperty(
-          "--dur",
-          `${2 + Math.random() * 4}s`
-        );
-
-        sparkle.style.setProperty(
-          "--delay",
-          `${Math.random() * -5}s`
-        );
-
-        sparkles.appendChild(sparkle);
-      }
-    }
-
-
-    if (rain) {
-
-      for (let i = 0; i < 35; i++) {
-
-        const drop = document.createElement("span");
-
-        drop.className = "raindrop";
-        drop.style.left = `${Math.random() * 100}%`;
-
-        drop.style.setProperty(
-          "--len",
-          `${25 + Math.random() * 45}px`
-        );
-
-        drop.style.setProperty(
-          "--dur",
-          `${1.1 + Math.random() * 1.5}s`
-        );
-
-        drop.style.setProperty(
-          "--delay",
-          `${Math.random() * -4}s`
-        );
-
-        rain.appendChild(drop);
-      }
+      sparkles.appendChild(sparkle);
     }
   }
 
@@ -186,9 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
 
         flame.style.opacity = "0";
-
-        flame.style.transform =
-          "scale(.1) translateY(-15px)";
+        flame.style.transform = "scale(.1) translateY(-15px)";
 
       }, index * 150);
 
@@ -196,22 +156,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $("#blowBtn").classList.add("hidden");
 
-    $("#candleStatus").textContent =
-      "Dëshira u dërgua... ♡";
+    $("#candleStatus").textContent = "Dëshira u dërgua... ♡";
 
     setTimeout(() => {
-
       $("#afterCandles").classList.remove("hidden");
-
     }, 700);
 
   });
 
 
   $("#toLevel2").addEventListener("click", () => {
-
     showLevel(2);
-
   });
 
 
@@ -239,30 +194,23 @@ document.addEventListener("DOMContentLoaded", () => {
     noBtn.style.transform = `translate(${x}px, ${y}px)`;
   }
 
-
   noBtn.addEventListener("mouseenter", dodgeNo);
 
-  noBtn.addEventListener("click", (event) => {
-
+  noBtn.addEventListener("click", event => {
     event.preventDefault();
     dodgeNo();
-
   });
 
-  noBtn.addEventListener("touchstart", (event) => {
-
+  noBtn.addEventListener("touchstart", event => {
     event.preventDefault();
     dodgeNo();
-
   }, { passive: false });
 
 
   $("#yesBtn").addEventListener("click", () => {
 
     $("#yesResult").classList.remove("hidden");
-
     $("#yesBtn").classList.add("hidden");
-
     noBtn.classList.add("hidden");
 
   });
@@ -272,19 +220,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
     showLevel(3);
 
+    startLevelThree();
+
   });
 
 
-  // LEVEL 3 - CAT
-  // After the fifth tap, level 4 opens automatically.
+  // LEVEL 3 - MESSAGE BURNS IMMEDIATELY, THEN CAT APPEARS
+
+  function startLevelThree() {
+
+    if (levelThreeStarted) return;
+
+    levelThreeStarted = true;
+
+    const message = $("#flashMessage");
+    const catContent = $("#catContent");
+
+    message.classList.remove("hidden");
+    catContent.classList.add("hidden");
+
+    // Restart the burn animation each time this level starts.
+    message.style.animation = "none";
+    void message.offsetWidth;
+    message.style.animation = "messageBurn 100ms linear forwards";
+
+    // The cat appears as soon as the 100ms burn animation finishes.
+    transitionTimer = setTimeout(() => {
+
+      message.classList.add("hidden");
+
+      catContent.classList.remove("hidden");
+
+    }, 100);
+
+  }
+
+
+  // LEVEL 3 - CAT INTERACTION
 
   const catBtn = $("#catBtn");
 
   catBtn.addEventListener("click", () => {
 
-    if (catLocked || catClicks >= 5) {
-      return;
-    }
+    if (catLocked || catClicks >= 5) return;
 
     catClicks++;
 
@@ -294,15 +272,13 @@ document.addEventListener("DOMContentLoaded", () => {
     wordElement.classList.remove("show");
     wordElement.textContent = word;
 
-    // Restart the word animation
     void wordElement.offsetWidth;
 
     wordElement.classList.add("show");
 
     $("#catSpeech").textContent = word;
 
-    $("#catCount").textContent =
-      `${catClicks} / 5`;
+    $("#catCount").textContent = `${catClicks} / 5`;
 
     $("#catCounterFill").style.width =
       `${catClicks * 20}%`;
@@ -313,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
         : "Edhe pak dhe surpriza vazhdon...";
 
 
-    // FIFTH TAP: FINISH CAT LEVEL
+    // FIFTH TAP: CAT LEAVES AND LEVEL 4 OPENS
 
     if (catClicks === 5) {
 
@@ -324,44 +300,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       $("#afterCat").classList.remove("hidden");
 
-      $("#catSpeech").textContent =
-        "Mirupafshim! ♡";
+      $("#catSpeech").textContent = "Mirupafshim! ♡";
 
       transitionTimer = setTimeout(() => {
 
         showLevel(4);
-
-        startLevelFour();
 
       }, 1200);
 
     }
 
   });
-
-
-  // LEVEL 4 - SHORT QUESTION
-
- function startLevelFour() {
-
-  if (levelFourStarted) return;
-
-  levelFourStarted = true;
-
-  const flash = $("#flashMessage");
-  const game = $("#romanticGame");
-
-  flash.classList.remove("hidden");
-
-  setTimeout(() => {
-
-    flash.classList.add("hidden");
-
-    game.classList.remove("hidden");
-
-  }, 1100);
-
-  }
 
 
   // LEVEL 4 - COLLECT OBJECTS
@@ -384,8 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       collected++;
 
-      $("#collectCount").textContent =
-        `${collected} / 5`;
+      $("#collectCount").textContent = `${collected} / 5`;
 
       $("#collectFill").style.width =
         `${collected * 20}%`;
@@ -393,11 +341,8 @@ document.addEventListener("DOMContentLoaded", () => {
       $("#collectMessage").textContent =
         item.dataset.message || "Një kujtim i vogël ♡";
 
-
       if (collected === 5) {
-
         finishCollection();
-
       }
 
     });
@@ -407,9 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function finishCollection() {
 
-    if (collectionLocked) {
-      return;
-    }
+    if (collectionLocked) return;
 
     collectionLocked = true;
 
@@ -441,28 +384,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // GO TO FINAL LETTER
+  // LEVEL 5 - FINAL LETTER
 
   $("#toLevel5").addEventListener("click", () => {
-
     showLevel(5);
-
   });
 
 
-  // RESTART EVERYTHING
+  // RESTART
 
   $("#restartBtn").addEventListener("click", () => {
 
     if (transitionTimer) {
       clearTimeout(transitionTimer);
+      transitionTimer = null;
     }
 
     catClicks = 0;
     catLocked = false;
     collected = 0;
     collectionLocked = false;
-    levelFourStarted = false;
+    levelThreeStarted = false;
 
 
     // RESET CANDLES
@@ -489,25 +431,28 @@ document.addEventListener("DOMContentLoaded", () => {
     $("#yesBtn").classList.remove("hidden");
 
     noBtn.classList.remove("hidden");
-
     noBtn.style.transform = "";
 
 
-    // RESET CAT
+    // RESET LEVEL 3
+
+    $("#flashMessage").classList.remove("hidden");
+
+    $("#flashMessage").style.animation = "none";
+    void $("#flashMessage").offsetWidth;
+    $("#flashMessage").style.animation = "";
+
+    $("#catContent").classList.add("hidden");
 
     catBtn.classList.remove("leaving");
-
     catBtn.disabled = false;
 
     $("#catWord").textContent = "";
-
     $("#catWord").classList.remove("show");
 
-    $("#catSpeech").textContent =
-      "Më prek edhe një herë ♡";
+    $("#catSpeech").textContent = "Më prek edhe një herë ♡";
 
     $("#catCount").textContent = "0 / 5";
-
     $("#catCounterFill").style.width = "0%";
 
     $("#catNote").textContent =
@@ -518,28 +463,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // RESET LEVEL 4
 
-    $("#flashMessage").classList.remove("hidden");
-
-    $("#romanticGame").classList.add("hidden");
-
     $("#loadingArea").classList.add("hidden");
-
     $("#afterCollection").classList.add("hidden");
 
-    $("#collectMessage").textContent =
-      "Mblidhi të gjitha";
-
+    $("#collectMessage").textContent = "Mblidhi të gjitha";
     $("#collectCount").textContent = "0 / 5";
 
     $("#collectFill").style.width = "0%";
-
     $("#loadingFill").style.width = "0%";
-
 
     collectItems.forEach(item => {
 
       item.classList.remove("collected");
-
       item.disabled = false;
 
     });
@@ -548,7 +483,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // RETURN TO INTRO
 
     experience.classList.add("hidden");
-
     intro.classList.remove("hidden");
 
     showLevel(1);
