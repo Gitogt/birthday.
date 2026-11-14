@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#24151f">
+  <title>Happy Birthday, Flori ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="backdrop"></div>
+  <div class="backdrop-shade"></div>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <div class="balloon-layer" id="balloonLayer"></div>
+  <div class="sparkle-layer" id="sparkleLayer"></div>
+  <div class="rain-layer" id="rainLayer"></div>
+
+  <div class="site-shell">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">F</span>
+        <span>A DAY MADE FOR FLORI</span>
+      </div>
+
+      <div class="top-note">
+        <span class="live-dot"></span>
+        A little birthday surprise
+      </div>
+    </header>
+
+    <main>
+
+      <!-- INTRO -->
+      <section class="intro panel" id="intro">
+
+        <p class="eyebrow">A SPECIAL DAY · A SPECIAL PERSON</p>
+
+        <h1>
+          Happy Birthday<br>
+          <em>Flori</em><span class="heart">♡</span>
+        </h1>
+
+        <p class="intro-copy">
+          Kam përgatitur një surprizë të vogël për ty.<br>
+          Hyr brenda dhe zbuloje hap pas hapi.
+        </p>
+
+        <button class="primary-button" id="startBtn">
+          Fillo surprizën <span>↗</span>
+        </button>
+
+        <div class="intro-caption">
+          A little journey, made with love
+        </div>
+
+      </section>
+
+
+      <!-- EXPERIENCE -->
+      <section class="experience hidden" id="experience">
+
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span id="chapterName">Një dëshirë për ty</span>
+            <span id="chapterNumber">01 / 05</span>
+          </div>
+
+          <div class="progress-track">
+            <div id="progressBar"></div>
+          </div>
+        </div>
+
+
+        <!-- LEVEL 1 -->
+        <section class="level active panel" id="level1">
+
+          <p class="eyebrow">CHAPTER 01</p>
+
+          <h2>Fillo me një dëshirë</h2>
+
+          <p class="description">
+            Mbyll sytë për pak çaste dhe bëj një dëshirë.
+            Pastaj fiki qirinjtë.
+          </p>
+
+          <div class="candle-stage">
+
+            <div class="candle-glow"></div>
+
+            <div class="candle-row">
+
+              <div class="candle">
+                <span class="flame"></span>
+                <span class="wick"></span>
+              </div>
+
+              <div class="candle tall">
+                <span class="flame"></span>
+                <span class="wick"></span>
+              </div>
+
+              <div class="candle">
+                <span class="flame"></span>
+                <span class="wick"></span>
+              </div>
+
+            </div>
+
+            <div class="cake-mini">
+              <span class="icing"></span>
+              <span class="cake-line"></span>
+            </div>
+
+            <div class="cake-plate"></div>
+
+          </div>
+
+          <p class="status-line" id="candleStatus">
+            Dëshira është gati?
+          </p>
+
+          <button class="primary-button" id="blowBtn">
+            Fiki qirinjtë ♡
+          </button>
+
+          <div class="hidden reveal" id="afterCandles">
+
+            <p class="success-copy">
+              Uroj që dëshira jote të bëhet realitet.
+            </p>
+
+            <button class="secondary-button" id="toLevel2">
+              Vazhdo →
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- LEVEL 2 -->
+        <section class="level panel" id="level2">
+
+          <p class="eyebrow">CHAPTER 02</p>
+
+          <h2>Një pyetje e vogël</h2>
+
+          <div class="question-card">
+
+            <span class="question-heart">♡</span>
+
+            <h3>A më ke xhan?</h3>
+
+            <p>Mendoje mirë përgjigjen tënde...</p>
+
+            <div class="answer-area">
+
+              <button class="yes-button" id="yesBtn">
+                Po ♡
+              </button>
+
+              <button class="no-button" id="noBtn">
+                Jo
+              </button>
+
+            </div>
+
+            <div class="hidden reveal yes-result" id="yesResult">
+
+              <div class="big-heart">♥</div>
+
+              <h3>Edhe unë gjithashtu.</h3>
+
+              <p>Madje më shumë nga sa mendon.</p>
+
+              <button class="secondary-button" id="afterYes">
+                Vazhdo →
+              </button>
+
+            </div>
+
+          </div>
+
+          <p class="quiet-note">
+            Disa përgjigje janë më të bukura kur thuhen thjesht.
+          </p>
+
+        </section>
+
+
+        <!-- LEVEL 3 -->
+        <section class="level panel" id="level3">
+
+          <p class="eyebrow">CHAPTER 03</p>
+
+          <h2>Një shoqëri e vogël</h2>
+
+          <p class="description">
+            Preke macen pesë herë.
+            Ajo ka disa fjalë të vogla për ty.
+          </p>
+
+          <div class="cat-stage">
+
+            <div class="cat-moon">☾</div>
+            <div class="cat-window"></div>
+
+            <button class="cat-button" id="catBtn" type="button">
+
+              <span class="cat-art" id="catCharacter">
+
+                <span class="cat-ears">
+                  <i></i>
+                  <i></i>
+                </span>
+
+                <span class="cat-head">
+                  <i class="eye eye-left"></i>
+                  <i class="eye eye-right"></i>
+                  <i class="nose"></i>
+                  <i class="mouth"></i>
+                  <i class="whiskers"></i>
+                </span>
+
+                <span class="cat-body"></span>
+                <span class="cat-tail"></span>
+                <span class="cat-feet"></span>
+
+              </span>
+
+            </button>
+
+            <div class="cat-word" id="catWord"></div>
+
+          </div>
+
+          <p class="cat-speech" id="catSpeech">
+            Më prek edhe një herë ♡
+          </p>
+
+          <div class="cat-progress">
+
+            <div class="small-track">
+              <div id="catCounterFill"></div>
+            </div>
+
+            <span id="catCount">0 / 5</span>
+
+          </div>
+
+          <p class="quiet-note" id="catNote">
+            Çdo prekje sjell një fjalë të bukur.
+          </p>
+
+          <div class="hidden reveal" id="afterCat">
+
+            <p class="success-copy">
+              Misioni i maces u përfundua. ♡
+            </p>
+
+            <p class="quiet-note">
+              Po hapet surpriza tjetër...
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- LEVEL 4 -->
+        <section class="level panel" id="level4">
+
+          <p class="eyebrow">CHAPTER 04</p>
+
+          <div class="flash-message" id="flashMessage">
+            Dëshiron të lidhesh me mua?
+          </div>
+
+          <div class="hidden collection-game" id="romanticGame">
+
+            <h2>Mbledh pak magji</h2>
+
+            <p class="description">
+              Prek pesë simbolet e vogla për të hapur letrën.
+            </p>
+
+            <div class="collect-scene">
+
+              <button class="collect-item heart-item"
+                data-message="Një zemër vetëm për ty"
+                aria-label="Zemra">♡</button>
+
+              <button class="collect-item star-item"
+                data-message="Një yll për të ndriçuar ditët e tua"
+                aria-label="Ylli">✦</button>
+
+              <button class="collect-item moon-item"
+                data-message="Një hënë për netët e qeta"
+                aria-label="Hëna">☾</button>
+
+              <button class="collect-item flower-item"
+                data-message="Një lule për buzëqeshjen tënde"
+                aria-label="Lulja">✿</button>
+
+              <button class="collect-item sparkle-item"
+                data-message="Pak shkëlqim për ditën tënde"
+                aria-label="Shkëlqimi">✧</button>
+
+            </div>
+
+            <div class="collect-progress">
+
+              <div class="progress-meta">
+                <span id="collectMessage">Mblidhi të gjitha</span>
+                <span id="collectCount">0 / 5</span>
+              </div>
+
+              <div class="progress-track">
+                <div id="collectFill"></div>
+              </div>
+
+            </div>
+
+            <div class="hidden loading-area" id="loadingArea">
+
+              <p>Po përgatitet letra jote...</p>
+
+              <div class="progress-track">
+                <div id="loadingFill"></div>
+              </div>
+
+            </div>
+
+            <div class="hidden reveal" id="afterCollection">
+
+              <p class="success-copy">
+                Surpriza jote është gati.
+              </p>
+
+              <button class="secondary-button" id="toLevel5">
+                Hap letrën ♡
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- LEVEL 5 -->
+        <section class="level panel final-panel" id="level5">
+
+          <p class="eyebrow">CHAPTER 05 · JUST FOR YOU</p>
+
+          <div class="letter">
+
+            <div class="letter-flourish">♡</div>
+
+            <p class="letter-kicker">
+              Një urim i vogël
+            </p>
+
+            <h2>Dear Flori,</h2>
+
+            <div class="letter-body">
+
+              <p>Urime ditëlindjen! ♡</p>
+
+              <p>
+                Uroj që ky vit të të sjellë shëndet, qetësi,
+                suksese dhe sa më shumë arsye për të buzëqeshur.
+              </p>
+
+              <p>
+                Shpresoj të kesh gjithmonë pranë njerëz që të
+                vlerësojnë, të mbështesin dhe të bëjnë të ndihesh mirë.
+              </p>
+
+              <p>
+                Tu bëfshin realitet dëshirat që mban në zemër
+                dhe qofshin ditët e tua të mbushura me momente
+                që ia vlejnë të kujtohen.
+              </p>
+
+              <p>
+                Gëzuar ditëlindjen, Flori. Të uroj gjithë të mirat,
+                sot dhe në çdo ditë që vjen dhe mos harro qe te kam
+                shumeeeeee xhan.
+              </p>
+
+            </div>
+
+            <div class="signature">
+              Me shumë dashuri <span>♡</span>
+            </div>
+
+          </div>
+
+          <p class="ending-note">
+            THE END · BUT THE WISHES ARE JUST BEGINNING
+          </p>
+
+          <button class="secondary-button" id="restartBtn">
+            Fillo përsëri ↺
+          </button>
+
+        </section>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      HAPPY BIRTHDAY, FLORI ♡
+    </footer>
+
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+</body>
+</html>
